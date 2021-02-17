@@ -1,0 +1,118 @@
+<html>
+<head> <link rel="stylesheet" href="style.css" type="text/css">
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+</head>
+	<style>
+						*{
+								margin:0px;
+								padding:0px;
+						}
+						body{
+								background-image:url(images/bg-top.jpg);
+								
+						}
+						#content{
+								height:auto;
+								width:100%;
+								background:white;
+								box-shadow:0px 0px 10px black;
+						}
+						#content1{
+								height:auto;
+								width:500px;
+								background:white;
+								box-shadow:0px 0px 10px white;
+								margin:auto;
+								border-radius:15px;
+								overflow:hidden;p
+						}
+						#title{
+								height:40px;
+								width:100%;
+								background:black;
+								color:white;
+								text-align:center;
+								font-size:25px;
+								font-weight:bold;
+								padding-top:px;
+						padding-bottom:10px;
+						}
+						
+				
+				</style>
+<div id="content" ><center><img src="images/1.jpeg"></center></head></div>
+<body>
+<title>STUDENT REVIEWS </title>
+<br>
+	<div id="content1">
+				<div id="title">
+		STUDENT REVIEWS
+				</div>
+				
+				
+				 <form id="addCommentForm" method="post" >
+              
+                USERNAME-><input type="text" name="username" size="10" title="username" />
+              
+			    DATE-><input type="date"  name="date" size="10" title="date" />
+ 
+ 
+              COMMENTS->  <input type="text"  name="comments"  title="comments" />
+                
+                
+                
+                <input type="submit" name="submit" value="submit" alt="submit"  />
+                
+          </form>
+		 
+		  <script type="text/javascript">
+$(document).ready(function() {
+    $('#addCommentForm').submit(function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: 'PostComment.php',
+            data: $(this).serialize(),
+            success: function(response)
+		
+            {
+                var jsonData = JSON.parse(response);
+                
+               if (jsonData.success == 0)
+                {
+                    alert('comment added successfuly');
+			
+                }
+                else(jsonData.Error == 1)
+                {
+                    //alert('something went wrong plz try again later');
+                }
+				
+               
+				
+           }
+       });
+     });
+});
+</script>
+<form action="getcomment.php" method="post">
+
+<input type="submit" name="show comments" value="show comments">
+</form>
+
+
+<div id="content">
+<center>
+    <div id="wowslider-container1">
+	<div class="ws_images"><ul>
+		
+		<li><img src="images/pic1.jpg" alt="pic1" title="pic1" id="wows1_1"/></li>
+		<li><img src="images/pic2.jpg" alt="pic2" title="pic2" id="wows1_2"/></li>
+		<li><img src="images/pic3.jpg" alt="pic3" title="pic3" id="wows1_3"/></li>
+		<li><img src="images/pic4.jpg" alt="pic4" title="pic4" id="wows1_4"/></li>
+		
+	</ul></div>
+	</body>
+	
+	</html>
+
